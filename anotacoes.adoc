@@ -1,0 +1,5 @@
+= Anotações
+
+Fazer configuração do layout para 20/11/24
+
+template escolhido https://startbootstrap.com/template/sb-admin
