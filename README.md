@@ -5,4 +5,7 @@ Este projeto está sendo desenvoldido durante a disciplina de Programação Web 
 ## Tecnologias utilizadas
 
 Node 22.11.0
+
 NestJs 1.4.8
+
+Typescript 5.7.2
