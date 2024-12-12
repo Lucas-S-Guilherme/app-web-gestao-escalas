@@ -9,3 +9,11 @@ Node 22.11.0
 NestJs 1.4.8
 
 Typescript 5.7.2
+
+
+    [HTML/CSS] -
+    [Handlebars] -
+    [Javascript/Typescript] -
+    [NodeJs] -
+    [Typeorm] -
+

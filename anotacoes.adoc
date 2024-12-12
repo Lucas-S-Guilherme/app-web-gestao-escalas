@@ -2,4 +2,24 @@
 
 Fazer configuração do layout para 20/11/24
 
-template escolhido https://startbootstrap.com/template/sb-admin
+== 11/12/24
+
+$ nest --help
+Comando lista os comandos disponíveis
+
+Comando para criar, módulo, controller e service:
+
+npx nest g mo servidor[path] modules - > cria um módulo
+
+npx nest g co servidor[path] modules - > cria um controle
+
+npx nest g s servidor[/path] modules - > cria um módulo
+
+Estudar o uso de: https://mui.com/material-ui/react-autocomplete/
+
+*Fazer rotas de todos os exemplos*
+ 
+
+
+
+
