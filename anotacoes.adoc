@@ -4,8 +4,6 @@ Template Projeto: https://startbootstrap.com/template/sb-admin
 
 Fazer configuração do layout para 20/11/24
 
-== 11/12/24
-
 $ nest --help
 Comando lista os comandos disponíveis
 
@@ -17,6 +15,10 @@ npx nest g co servidor[path] modules - > cria um controller
 
 npx nest g s servidor[/path] modules - > cria um módulo
 
+Utilizar:
+https://mui.com/material-ui/getting-started/usage/
+
+Implementando React Com o NestJS
 
 
 *Fazer rotas de todos os exemplos*
