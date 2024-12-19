@@ -1,5 +1,7 @@
 = Anotações
 
+Template Projeto: https://startbootstrap.com/template/sb-admin
+
 Fazer configuração do layout para 20/11/24
 
 == 11/12/24
@@ -11,15 +13,17 @@ Comando para criar, módulo, controller e service:
 
 npx nest g mo servidor[path] modules - > cria um módulo
 
-npx nest g co servidor[path] modules - > cria um controle
+npx nest g co servidor[path] modules - > cria um controller
 
 npx nest g s servidor[/path] modules - > cria um módulo
 
-Estudar o uso de: https://mui.com/material-ui/react-autocomplete/
+
 
 *Fazer rotas de todos os exemplos*
  
 
+== 18/12/24
 
+Fazer os recursos, listagem com as ações, formulários, E configuração do module, controller e service. 
 
 

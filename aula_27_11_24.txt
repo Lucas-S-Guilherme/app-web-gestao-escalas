@@ -12,3 +12,4 @@ Desenvolver (montar) as telas de listagem e cadastro de no mínimo 2 recursos do
 
 * Cada um da dupla deve fazer um recurso e subir no GitHub, cada um com seu usuário. A atividade vale como parte da avaliação do acompanhamento do desenvolvimento do projeto. 
 ** O envio do desenvolvimento no GitHub do projeto valerá como presença. Realizar a atividade até 29/11 às 23h
+
