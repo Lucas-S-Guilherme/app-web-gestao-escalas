@@ -1,5 +1,7 @@
 = Anotações
 
+npm i = instala dependencias do projeto que constam em package.json
+
 Template Projeto: https://startbootstrap.com/template/sb-admin
 
 Fazer configuração do layout para 20/11/24
@@ -9,11 +11,13 @@ Comando lista os comandos disponíveis
 
 Comando para criar, módulo, controller e service:
 
-npx nest g mo servidor[path] modules - > cria um módulo
+npx nest g mo servidor[path]  - > cria um módulo
 
-npx nest g co servidor[path] modules - > cria um controller
+npx nest g co servidor[path]  - > cria um controller
 
-npx nest g s servidor[/path] modules - > cria um módulo
+npx nest g s servidor[/path]  - > cria um service
+
+- Caso esteja dentro da pasta /modules, não é preciso escrever o caminho na parte [path]
 
 Utilizar:
 https://mui.com/material-ui/getting-started/usage/

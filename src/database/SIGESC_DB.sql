@@ -12,7 +12,7 @@ cpf_usuario VARCHAR (11) NOT NULL UNIQUE,
 data_nascimento_usuario DATE NOT NULL,
 telefone_usuario VARCHAR (11),
 email_usuario VARCHAR (255),
-matricula VARCHAR(9) NOT NULL
+matricula VARCHAR(9) NOT NULL UNIQUE
 );
 
 CREATE TABLE especializacao (
