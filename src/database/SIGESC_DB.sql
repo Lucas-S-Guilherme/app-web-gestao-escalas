@@ -12,7 +12,7 @@ cpf_usuario VARCHAR (11) NOT NULL UNIQUE,
 data_nascimento_usuario DATE NOT NULL,
 telefone_usuario VARCHAR (11),
 email_usuario VARCHAR (255),
-matricula VARCHAR(9) NOT NULL UNIQUE
+matricula VARCHAR(9) NOT NULL
 );
 
 CREATE TABLE especializacao (
@@ -81,6 +81,7 @@ FOREIGN KEY (id_restricao) REFERENCES restricao (id_restricao)
 CREATE TABLE escala (
 id_escala INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 nome_escala VARCHAR (255),
+local_trabalho VARCHAR (255),
 data_inicio DATETIME NOT NULL,
 data_fim DATETIME NOT NULL,
 data_confeccao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
