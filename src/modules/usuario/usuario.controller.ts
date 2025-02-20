@@ -1,6 +1,9 @@
 // src/modules/usuario/usuario.controller.ts
 import { Controller, Post, Body, Put, Get, Render, Req, Res, Param } from '@nestjs/common';
+import { Response } from 'express';
 import { UsuarioService } from './usuario.service';
+import { UsuarioValidator } from './usuario.validator';
+import { setFlashErrors, setOld } from 'src/commom/helpers/flash-errors';
 
 
 Controller('usuario')
@@ -10,7 +13,7 @@ export class UsuarioController {
   @Get()
   @Render('usuario/index')
   async index() {
-    return { servidores: await this.service.getAll() };
+    return { usuario: await this.service.getAll() };
   }
 
   //Rota de Cadastro
@@ -25,7 +28,7 @@ export class UsuarioController {
   @Post('novo')
   async createSave(@Res() response: Response, @Req() request, @Body() data) {
     try {
-      const validador = await new ServidorValidator().validate(data);
+      const validador = await new UsuarioValidator().validate(data);
 
       console.log(validador.getData, validador.getErrors, validador.isError);
 
@@ -33,7 +36,7 @@ export class UsuarioController {
         setFlashErrors(request, validador.getErrors);
         setOld(request, data);
 
-        return response.redirect('/servidores/novo');
+        return response.redirect('/usuario/novo');
       }
 
       await this.service.create(data);
@@ -41,13 +44,13 @@ export class UsuarioController {
       console.log(err);
     }
 
-    return response.redirect('/servidores');
+    return response.redirect('/usuario');
   }
 
   //Rota de Atualização (Update)
   //Abrir o formulario
   @Get(':id/atualizacao')
-  @Render('servidor/form')
+  @Render('usuario/form')
   updateForm() {
     return {};
   }
