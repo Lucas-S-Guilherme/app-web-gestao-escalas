@@ -4,6 +4,8 @@ npm i = instala dependencias do projeto que constam em package.json
 
 Template Projeto: https://themewagon.github.io/SEODash/ui-alerts.html
 
+Usar Sweetalert2;
+
 Fazer configuração do layout para 20/11/24
 
 $ nest --help
@@ -29,3 +31,4 @@ npx nest g s servidor[/path]  - > cria um service
 Fazer os recursos, listagem com as ações, formulários, E configuração do module, controller e service. 
 
 
+19

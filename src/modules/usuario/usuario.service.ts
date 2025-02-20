@@ -16,3 +16,5 @@ export class UsuarioService {
     return await usuario.save();
   }
 }
+
+//implementar outras funções
