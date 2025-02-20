@@ -6,7 +6,9 @@ Template Projeto: https://themewagon.github.io/SEODash/ui-alerts.html
 
 Usar Sweetalert2;
 
-Fazer configuração do layout para 20/11/24
+*05/03/2025 - enviar projeto final e fazer vídeo de 10 min falando sobre o projeto*
+
+*Não precisa apresentar nada sobre a programação*
 
 $ nest --help
 Comando lista os comandos disponíveis
