@@ -6,7 +6,7 @@ import { UsuarioValidator } from './usuario.validator';
 import { setFlashErrors, setOld } from 'src/commom/helpers/flash-errors';
 
 
-Controller('usuario')
+@Controller('usuario')
 export class UsuarioController {
   constructor(private readonly service: UsuarioService) {}
 

@@ -7,9 +7,9 @@ export const databaseProviders = [
             const dataSource = new DataSource({
                 type: 'mysql',
                 host: 'localhost',
-                port: 3360,
+                port: 3306,
                 username: 'root',
-                password: '1234',
+                password: 'Banco1234!',
                 database: 'SIGESC',
                 entities: [__dirname + '/../**/*.entity.{ts,js}'],
                 synchronize: false,

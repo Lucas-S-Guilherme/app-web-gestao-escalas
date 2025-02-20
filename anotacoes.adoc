@@ -2,7 +2,7 @@
 
 npm i = instala dependencias do projeto que constam em package.json
 
-Template Projeto: https://startbootstrap.com/template/sb-admin
+Template Projeto: https://themewagon.github.io/SEODash/ui-alerts.html
 
 Fazer configuração do layout para 20/11/24
 
@@ -19,10 +19,6 @@ npx nest g s servidor[/path]  - > cria um service
 
 - Caso esteja dentro da pasta /modules, não é preciso escrever o caminho na parte [path]
 
-Utilizar:
-https://mui.com/material-ui/getting-started/usage/
-
-Implementando React Com o NestJS
 
 
 *Fazer rotas de todos os exemplos*
