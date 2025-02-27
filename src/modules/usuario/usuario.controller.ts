@@ -62,11 +62,4 @@ export class UsuarioController {
   //Rota para Excluir
 }
 
-//criar um novo modulo
-//npx nest g mo servidor modules
 
-//criar um novo controller
-//npx nest g co servidor modules
-
-//criar um novo service
-//npx nest g s servidor modules

@@ -1,0 +1,16 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "Banco1234!",
+    "database": "SIGESC",
+    "synchronize": false,
+    "logging": true,
+    "entities": ["src/modules/**/*.entity.ts"],
+    "migrations": ["src/migrations/**/*.ts"],
+    "cli": {
+      "entitiesDir": "src/modules",
+      "migrationsDir": "src/migrations"
+    }
+  }

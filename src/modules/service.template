@@ -1,0 +1,35 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { {{EntityName}} } from './{{entityName}}.entity';
+
+@Injectable()
+export class {{EntityName}}Service {
+  constructor(
+    @InjectRepository({{EntityName}})
+    private readonly {{entityName}}Repository: Repository<{{EntityName}}>,
+  ) {}
+
+  async getAll() {
+    return await this.{{entityName}}Repository.find();
+  }
+
+  async findOneById(id: number) {
+    return await this.{{entityName}}Repository.findOne({ where: { id_{{entityName}}: id } });
+  }
+
+  async create(data: any) {
+    const {{entityName}} = this.{{entityName}}Repository.create(data);
+    return await this.{{entityName}}Repository.save({{entityName}});
+  }
+
+  async update(id: number, data: any) {
+    await this.{{entityName}}Repository.update(id, data);
+    return await this.findOneById(id);
+  }
+
+  async delete(id: number) {
+    const result = await this.{{entityName}}Repository.delete(id);
+    return result.affected > 0;
+  }
+}

@@ -15,6 +15,14 @@ email_usuario VARCHAR (255),
 matricula VARCHAR(9) NOT NULL
 );
 
+INSERT INTO usuario (tipo_usuario, nome_usuario, cpf_usuario, data_nascimento_usuario, telefone_usuario, email_usuario, matricula)
+VALUES 
+('Administrador', 'João Silva', '12345678901', '1985-05-15', '11987654321', 'joao.silva@example.com', '20230001'),
+
+('Gerente', 'Maria Oliveira', '23456789012', '1990-08-25', '21987654322', 'maria.oliveira@example.com', '20230002'),
+
+('Operador', 'Carlos Souza', '34567890123', '1988-03-10', '31987654323', 'carlos.souza@example.com', '20230003');
+
 CREATE TABLE especializacao (
 id_especializacao INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 nome_especializacao VARCHAR(255) NOT NULL,
