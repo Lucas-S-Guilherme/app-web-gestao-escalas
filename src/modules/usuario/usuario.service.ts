@@ -27,7 +27,10 @@ export class UsuarioService {
     }
 
     async getById(id: number) {
-        return await Usuario.findOneBy({ id_usuario: id });
+      console.log('[DEBUG] Buscando usuário com ID:', id);
+      const usuario = await Usuario.findOneBy({ id_usuario: id });
+      console.log('[DEBUG] Usuário encontrado:', usuario);
+      return usuario;
     }
     
     async getAll() {
@@ -42,11 +45,28 @@ export class UsuarioService {
       }
     }
 
-  async create(data: any) {
-    const usuario = Usuario.create({ ...data });
+    // usuario.service.ts
+    async create(data: any) {
+      try {
+        console.log('[DEBUG] Dados recebidos no serviço:', data); // Log para depuração
 
-    return await usuario.save();
-  }
+        const usuario = Usuario.create({
+          tipo_usuario: data.tipo_usuario,
+          nome_usuario: data.nome_usuario,
+          cpf_usuario: data.cpf_usuario,
+          data_nascimento_usuario: data.data_nascimento_usuario,
+          telefone_usuario: data.telefone_usuario,
+          email_usuario: data.email_usuario,
+          matricula: data.matricula,
+        });
+
+        await usuario.save();
+        return usuario;
+      } catch (error) {
+        console.error('[ERRO] Falha ao criar usuário:', error);
+        throw new Error('Erro ao criar usuário');
+      }
+    }
 }
 
 //implementar outras funções

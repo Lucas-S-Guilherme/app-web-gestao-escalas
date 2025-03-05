@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8">
@@ -10,30 +10,37 @@
 </head>
 
 <body>
-  <!--  Body Wrapper -->
-  <h1>CARREGOU O MAIN</h1>
+  <!-- Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
     <aside class="left-sidebar">
-     {{> sidebar}}
+      {{> sidebar}}
     </aside>
-    <!--  Sidebar End -->
-    <!--  Main wrapper -->
+    <!-- Sidebar End -->
+
+    <!-- Main Wrapper -->
     <div class="body-wrapper">
-      <!--  Header Start -->
+      <!-- Header Start -->
       <header class="app-header">
-     {{> header}}
+        {{> header}}
       </header>
-      <!--  Header End -->
+      <!-- Header End -->
+
+      <!-- Conteúdo Principal -->
       <div class="container-fluid">
         {{> content}}
       </div>
+
+      <!-- Rodapé -->
+      <footer class="footer text-center py-4">
+        <p class="mb-0 fs-4">Desenvolvido por <strong>Lucas Guilherme</strong> | Gestão de Escalas</p>
+      </footer>
     </div>
   </div>
+
+  <!-- Scripts -->
   <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="/assets/libs/jquery/bower.json"
-  
   <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
   <script src="/assets/libs/simplebar/dist/simplebar.js"></script>
@@ -42,4 +49,5 @@
   <script src="/assets/js/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
+
 </html>

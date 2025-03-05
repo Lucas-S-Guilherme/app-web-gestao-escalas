@@ -1,13 +1,16 @@
+// usuario.dto.ts
 import { IsNotEmpty } from 'class-validator';
 
 export class UsuarioDto {
+  @IsNotEmpty({ message: 'O campo Tipo de Usuário é obrigatório' })
+  tipo_usuario: string; // Adicionei o campo tipo_usuario ao DTO
+
   @IsNotEmpty({ message: 'O campo Nome é obrigatório' })
-  nome_usuario: string; // Alterado de 'nome' para 'nome_usuario'
+  nome_usuario: string;
 
   @IsNotEmpty({ message: 'O campo CPF é obrigatório' })
-  cpf_usuario: string; // Alterado de 'cpf' para 'cpf_usuario'
+  cpf_usuario: string;
 
-  // Adicione os demais campos seguindo o mesmo padrão
   @IsNotEmpty({ message: 'O campo Data de Nascimento é obrigatório' })
   data_nascimento_usuario: Date;
 
@@ -19,4 +22,6 @@ export class UsuarioDto {
 
   @IsNotEmpty({ message: 'O campo Matrícula é obrigatório' })
   matricula: string;
+
+  
 }

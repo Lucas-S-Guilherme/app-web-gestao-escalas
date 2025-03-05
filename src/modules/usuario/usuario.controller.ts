@@ -45,9 +45,12 @@ export class UsuarioController {
   }
 
   // Rota para Salvar os dados de cadastro
+  // usuario.controller.ts
   @Post('novo')
   async createSave(@Res() response: Response, @Req() request, @Body() data) {
     try {
+      console.log('[DEBUG] Dados recebidos no controlador:', data); // Log para depuração
+
       const validador = await new UsuarioValidator().validate(data);
 
       if (validador.isError) {
@@ -57,13 +60,12 @@ export class UsuarioController {
       }
 
       await this.service.create(validador.getData);
+      return response.redirect('/usuario');
     } catch (error) {
       console.error('Erro ao criar usuário:', error);
       setFlashErrors(request, ['Ocorreu um erro ao tentar criar o usuário. Tente novamente.']);
       return response.redirect('/usuario/novo');
     }
-
-    return response.redirect('/usuario');
   }
 
   // Rota de Atualização - Abrir o formulário
@@ -156,4 +158,8 @@ export class UsuarioController {
 
     return response.redirect('/usuario');
   }
+
+  
+
+
 }

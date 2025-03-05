@@ -1,0 +1,47 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lista de Especializações</h5>
+            <a href="/especializacao/novo" class="btn btn-primary mb-3">Nova Especialização</a>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Sigla</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#if especializacoes}}
+                    {{#each especializacoes}}
+                      <tr>
+                        <td>{{this.id_especializacao}}</td>
+                        <td>{{this.nome_especializacao}}</td>
+                        <td>{{this.descricao_especializacao}}</td>
+                        <td>{{this.sigla_especializacao}}</td>
+                        <td>
+                          <a href="/especializacao/{{this.id_especializacao}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                          <a href="/especializacao/{{this.id_especializacao}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                  {{else}}
+                    <tr>
+                      <td colspan="5" class="text-center">Nenhuma especialização encontrada.</td>
+                    </tr>
+                  {{/if}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

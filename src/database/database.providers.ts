@@ -13,8 +13,9 @@ export const databaseProviders = [
         password: 'Banco1234!',
         database: 'SIGESC_Web',
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        namingStrategy: new SnakeNamingStrategy(),
-        synchronize: true,
+        synchronize: false,
+        logging: true, //habilita logs detalhados
+        logger: 'advanced-console'
       });
 
       return dataSource.initialize();

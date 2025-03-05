@@ -1,11 +1,23 @@
 {{#> main}}
   {{#*inline "content"}}
+    {{#if flashErrors}}
+      <div class="alert alert-danger">
+        {{#each flashErrors}}
+          <p style="margin: 0; padding: 0;">{{this}}</p>
+        {{/each}}
+      </div>
+    {{/if}}
+
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Lista de Usuários</h5>
             <a href="/usuario/novo" class="btn btn-primary mb-3">Novo Usuário</a>
+            <!-- Botão para buscar usuários -->
+            <button id="btn-buscar-usuarios" class="btn btn-secondary mb-3">
+              <i class="ti ti-refresh"></i> Atualizar Lista
+            </button>
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
@@ -21,27 +33,29 @@
                     <th>Ações</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {{#each usuarios}}
-                    <tr>
-                      <td>{{this.id_usuario}}</td>
-                      <td>{{this.tipo_usuario}}</td>
-                      <td>{{this.nome_usuario}}</td>
-                      <td>{{this.cpf_usuario}}</td>
-                      <td>{{this.data_nascimento_usuario}}</td>
-                      <td>{{this.telefone_usuario}}</td>
-                      <td>{{this.email_usuario}}</td>
-                      <td>{{this.matricula}}</td>
-                      <td>
-                        <a href="/usuario/{{this.id_usuario}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="/usuario/{{this.id_usuario}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
-                      </td>
-                    </tr>
+                <tbody id="tabela-usuarios">
+                  {{#if usuarios}}
+                    {{#each usuarios}}
+                      <tr>
+                        <td>{{this.id_usuario}}</td>
+                        <td>{{this.tipo_usuario}}</td>
+                        <td>{{this.nome_usuario}}</td>
+                        <td>{{this.cpf_usuario}}</td>
+                        <td>{{this.data_nascimento_usuario}}</td>
+                        <td>{{this.telefone_usuario}}</td>
+                        <td>{{this.email_usuario}}</td>
+                        <td>{{this.matricula}}</td>
+                        <td>
+                          <a href="/usuario/{{this.id_usuario}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                          <a href="/usuario/{{this.id_usuario}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                      </tr>
+                    {{/each}}
                   {{else}}
                     <tr>
                       <td colspan="9" class="text-center">Nenhum usuário encontrado.</td>
                     </tr>
-                  {{/each}}
+                  {{/if}}
                 </tbody>
               </table>
             </div>
@@ -51,3 +65,57 @@
     </div>
   {{/inline}}
 {{/main}}
+
+<script>
+  document.getElementById('btn-buscar-usuarios').addEventListener('click', async () => {
+    try {
+      const response = await fetch('/usuario/buscar', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Erro ao buscar usuários');
+      }
+
+      const data = await response.json();
+
+      // Atualiza a tabela
+      const tabela = document.getElementById('tabela-usuarios');
+      tabela.innerHTML = ''; // Limpa a tabela
+
+      if (data.usuarios && data.usuarios.length > 0) {
+        data.usuarios.forEach(usuario => {
+          const row = `
+            <tr>
+              <td>${usuario.id_usuario}</td>
+              <td>${usuario.tipo_usuario}</td>
+              <td>${usuario.nome_usuario}</td>
+              <td>${usuario.cpf_usuario}</td>
+              <td>${usuario.data_nascimento_usuario}</td>
+              <td>${usuario.telefone_usuario}</td>
+              <td>${usuario.email_usuario}</td>
+              <td>${usuario.matricula}</td>
+              <td>
+                <a href="/usuario/${usuario.id_usuario}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                <a href="/usuario/${usuario.id_usuario}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+              </td>
+            </tr>
+          `;
+          tabela.insertAdjacentHTML('beforeend', row);
+        });
+      } else {
+        tabela.innerHTML = `
+          <tr>
+            <td colspan="9" class="text-center">Nenhum usuário encontrado.</td>
+          </tr>
+        `;
+      }
+    } catch (error) {
+      console.error('Erro:', error);
+      alert('Erro ao buscar usuários. Tente novamente.');
+    }
+  });
+</script>

@@ -7,6 +7,14 @@
             <h5 class="card-title">{{#if usuario}}Editar Usuário{{else}}Novo Usuário{{/if}}</h5>
             <form method="POST" action="{{#if usuario}}/usuario/{{usuario.id_usuario}}/atualizacao{{else}}/usuario/novo{{/if}}">
               <div class="mb-3">
+                <label for="tipo_usuario" class="form-label">Tipo de Usuário</label>
+                <select class="form-control" id="tipo_usuario" name="tipo_usuario" required>
+                <option value="Administrador" {{#eq usuario.tipo_usuario "Administrador"}}selected{{/eq}}>Administrador</option>
+                <option value="Gerente" {{#eq usuario.tipo_usuario "Gerente"}}selected{{/eq}}>Gerente</option>
+                <option value="Operador" {{#eq usuario.tipo_usuario "Operador"}}selected{{/eq}}>Operador</option>
+              </select>
+              </div>
+              <div class="mb-3">
                 <label for="nome_usuario" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" value="{{usuario.nome_usuario}}" required>
               </div>
@@ -15,8 +23,19 @@
                 <input type="text" class="form-control" id="cpf_usuario" name="cpf_usuario" value="{{usuario.cpf_usuario}}" required>
               </div>
               <div class="mb-3">
-                <label for="data_nascimento_usuario" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="data_nascimento_usuario" name="data_nascimento_usuario" value="{{usuario.data_nascimento_usuario}}" required>
+             <div class="mb-3">
+              <label for="data_nascimento_usuario" class="form-label">Data de Nascimento</label>
+              <input 
+                type="date" 
+                class="form-control" 
+                id="data_nascimento_usuario" 
+                name="data_nascimento_usuario" 
+                value="{{usuario.data_nascimento_usuario}}" 
+                required
+              >
+              <small class="form-text text-muted">
+                Data formatada: {{dateFormat usuario.data_nascimento_usuario}}
+              </small>
               </div>
               <div class="mb-3">
                 <label for="telefone_usuario" class="form-label">Telefone</label>
