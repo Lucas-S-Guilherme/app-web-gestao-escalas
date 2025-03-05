@@ -1,0 +1,15 @@
+Atividade da Aula
+Desenvolver (montar) as telas de listagem e cadastro de no mínimo 2 recursos do projeto.
+
+- Criar os controllers, configurar as rotas para o acesso e os métodos abaixo. Criar o controller conforme o recurso. Por exemplo: recurso cliente, o arquivo de controller deverá chamar controller cliente.controller.ts e a classe ClienteController. (Use o modulo da pasta auth de exemplo). O controller deverá ter os métodos:
+-- index (retornar o view de listagem)
+-- create (retornar o view do formulário de cadastro do recurso)
+
+- Criar as Views utilizando a configuração do template. Criar as views de acordo com o recurso. Por exemplo: recurso de cliente
+-- Criar a pasta cliente e dentro da pasta o arquivos abaixo:
+--- Criar e configurar o arquivo index.hbs (arquivo será para a listagem do recurso)
+--- Criar e configurar o arquivo formulario.hbs (arquivo será para o formulário de cadastro do recurso) 
+
+* Cada um da dupla deve fazer um recurso e subir no GitHub, cada um com seu usuário. A atividade vale como parte da avaliação do acompanhamento do desenvolvimento do projeto. 
+** O envio do desenvolvimento no GitHub do projeto valerá como presença. Realizar a atividade até 29/11 às 23h
+

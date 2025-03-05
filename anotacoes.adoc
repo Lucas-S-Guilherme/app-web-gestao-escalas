@@ -1,0 +1,36 @@
+= Anotações
+
+npm i = instala dependencias do projeto que constam em package.json
+
+Template Projeto: https://themewagon.github.io/SEODash/ui-alerts.html
+
+Usar Sweetalert2;
+
+*05/03/2025 - enviar projeto final e fazer vídeo de 10 min falando sobre o projeto*
+
+*Não precisa apresentar nada sobre a programação*
+
+$ nest --help
+Comando lista os comandos disponíveis
+
+Comando para criar, módulo, controller e service:
+
+npx nest g mo NomeModulo[path]  - > cria um módulo
+
+npx nest g co NomeControler[path]  - > cria um controller
+
+npx nest g s NomeService[path]  - > cria um service
+
+- Caso esteja dentro da pasta /modules, não é preciso escrever o caminho na parte [path]
+
+
+
+*Fazer rotas de todos os exemplos*
+ 
+
+== 18/12/24
+
+Fazer os recursos, listagem com as ações, formulários, E configuração do module, controller e service. 
+
+
+19
