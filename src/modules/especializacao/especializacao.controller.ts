@@ -73,43 +73,43 @@ export class EspecializacaoController {
     }
   }
 
-  @Post(':id/atualizacao')
-  async updateSave(@Param('id') id: number, @Res() response: Response, @Req() request, @Body() data) {
+    @Post(':id/atualizacao')
+    async updateSave(@Param('id') id: number, @Res() response: Response, @Req() request, @Body() data) {
     try {
-      console.log('[DEBUG] Dados recebidos para atualização:', data); // Log dos dados recebidos
-  
-      if (!data) {
+        console.log('[DEBUG] Dados recebidos para atualização:', data); // Log dos dados recebidos
+
+        if (!data) {
         console.error('[ERRO] Dados não foram recebidos corretamente.');
         setFlashErrors(request, ['Dados inválidos. Tente novamente.']);
         return response.redirect(`/especializacao/${id}/atualizacao`);
-      }
-  
-      const validador = await new EspecializacaoValidator().validate(data);
-  
-      if (validador.isError) {
+        }
+
+        const validador = await new EspecializacaoValidator().validate(data);
+
+        if (validador.isError) {
         console.warn('[AVISO] Erros de validação:', validador.getErrors); // Log dos erros de validação
         setFlashErrors(request, validador.getErrors);
         setOld(request, data);
         return response.redirect(`/especializacao/${id}/atualizacao`);
-      }
-  
-      const result = await this.service.update(id, validador.getData);
-  
-      if (!result) {
+        }
+
+        const result = await this.service.update(id, validador.getData);
+
+        if (!result) {
         console.warn('[AVISO] Falha ao atualizar a especialização com ID:', id); // Log de falha na atualização
         setFlashErrors(request, ['Erro ao atualizar a especialização. Tente novamente.']);
         return response.redirect(`/especializacao/${id}/atualizacao`);
-      }
-  
-      console.log('[DEBUG] Especialização atualizada com sucesso:', result); // Log de sucesso na atualização
+        }
+
+        console.log('[DEBUG] Especialização atualizada com sucesso:', result); // Log de sucesso na atualização
     } catch (error) {
-      console.error('Erro ao atualizar especialização:', error);
-      setFlashErrors(request, ['Ocorreu um erro ao atualizar a especialização. Tente novamente.']);
-      return response.redirect(`/especializacao/${id}/atualizacao`);
+        console.error('Erro ao atualizar especialização:', error);
+        setFlashErrors(request, ['Ocorreu um erro ao atualizar a especialização. Tente novamente.']);
+        return response.redirect(`/especializacao/${id}/atualizacao`);
     }
-  
+
     return response.redirect('/especializacao');
-  }
+    }
 
   @Get(':id/exclusao')
   @Render('especializacao/confirmar-exclusao')
