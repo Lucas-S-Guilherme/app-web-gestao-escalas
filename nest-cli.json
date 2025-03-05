@@ -7,9 +7,9 @@
     "assets": [
       "views/**/*",
       "views/layouts/*",
-      "views/layouts/partials/*"
+      "views/layouts/partials/*",
+      "public/**/*"  
     ],
     "watchAssets": true
   }
-  
 }
