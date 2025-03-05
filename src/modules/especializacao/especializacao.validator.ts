@@ -7,9 +7,14 @@ import { EspecializacaoDto } from './especializacao.dto';
 
 export class EspecializacaoValidator extends BaseValidator implements IValidator {
   private errors: string[] = [];
+  private validatedData: any;
 
   get getErrors(): string[] {
     return this.errors;
+  }
+
+  get getData(): any {
+    return this.validatedData;
   }
 
   async validate(data: any): Promise<this> {
@@ -20,6 +25,7 @@ export class EspecializacaoValidator extends BaseValidator implements IValidator
       this.errors = errors.map((error) => Object.values(error.constraints).join(', '));
     } else {
       this.errors = [];
+      this.validatedData = dados; // Armazena os dados validados
     }
 
     return this;

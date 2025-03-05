@@ -15,7 +15,7 @@ email_usuario VARCHAR (255),
 matricula VARCHAR(9) NOT NULL
 );
 
-SELECT * FROM usuario;
+#SELECT * FROM usuario;
 
 INSERT INTO usuario (tipo_usuario, nome_usuario, cpf_usuario, data_nascimento_usuario, telefone_usuario, email_usuario, matricula)
 VALUES 
@@ -97,8 +97,8 @@ CREATE TABLE combatente_especializacao (
 id_combatente INT NOT NULL,
 id_especializacao INT NOT NULL,
 PRIMARY KEY (id_combatente, id_especializacao),
-FOREIGN KEY (id_combatente) REFERENCES combatente(id_combatente),
-FOREIGN KEY (id_especializacao) REFERENCES especializacao(id_especializacao)
+FOREIGN KEY (id_combatente) REFERENCES combatente(id_combatente) ON DELETE CASCADE,
+FOREIGN KEY (id_especializacao) REFERENCES especializacao(id_especializacao) ON DELETE CASCADE
 );
 
 INSERT INTO combatente_especializacao (id_combatente, id_especializacao)
@@ -111,8 +111,8 @@ CREATE TABLE combatente_funcao (
 id_combatente INT NOT NULL,
 id_funcao INT NOT NULL,
 PRIMARY KEY (id_combatente, id_funcao),
-FOREIGN KEY (id_combatente) REFERENCES combatente(id_combatente),
-FOREIGN KEY (id_funcao) REFERENCES funcao(id_funcao)
+FOREIGN KEY (id_combatente) REFERENCES combatente(id_combatente) ON DELETE CASCADE,
+FOREIGN KEY (id_funcao) REFERENCES funcao(id_funcao) ON DELETE CASCADE
 );
 
 INSERT INTO combatente_funcao (id_combatente, id_funcao)
@@ -126,8 +126,8 @@ CREATE TABLE combatente_restricao (
 id_combatente INT NOT NULL,
 id_restricao INT NOT NULL,
 PRIMARY KEY (id_combatente, id_restricao),
-FOREIGN KEY (id_combatente) REFERENCES combatente (id_combatente),
-FOREIGN KEY (id_restricao) REFERENCES restricao (id_restricao)
+FOREIGN KEY (id_combatente) REFERENCES combatente (id_combatente) ON DELETE CASCADE,
+FOREIGN KEY (id_restricao) REFERENCES restricao (id_restricao) ON DELETE CASCADE
 );
 
 INSERT INTO combatente_restricao (id_combatente, id_restricao)
@@ -176,8 +176,8 @@ id_turno INT NOT NULL,
 hora_inicio DATETIME NOT NULL,
 hora_fim DATETIME NOT NULL,
 status_descanso ENUM('OK', 'VIOLADO') NOT NULL DEFAULT 'OK',
-FOREIGN KEY (id_combatente) REFERENCES combatente (id_combatente),
-FOREIGN KEY (id_turno) REFERENCES turno_trabalho (id_turno_trabalho)
+FOREIGN KEY (id_combatente) REFERENCES combatente (id_combatente) ON DELETE CASCADE,
+FOREIGN KEY (id_turno) REFERENCES turno_trabalho (id_turno_trabalho) ON DELETE CASCADE
 );
 
 INSERT INTO turno_combatente (id_combatente, id_turno, hora_inicio, hora_fim, status_descanso)

@@ -5,6 +5,16 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Lista de Especializações</h5>
+            {{#if successMessage}}
+              <div class="alert alert-success">
+                {{successMessage}}
+              </div>
+            {{/if}}
+            {{#if errorMessage}}
+              <div class="alert alert-danger">
+                {{errorMessage}}
+              </div>
+            {{/if}}
             <a href="/especializacao/novo" class="btn btn-primary mb-3">Nova Especialização</a>
             <div class="table-responsive">
               <table class="table table-striped">

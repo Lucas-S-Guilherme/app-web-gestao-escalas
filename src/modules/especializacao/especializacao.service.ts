@@ -22,14 +22,31 @@ export class EspecializacaoService {
   }
 
   async update(id: number, data: any) {
-    const especializacao = await Especializacao.findOneBy({ id_especializacao: id });
-    if (!especializacao) {
-      return false;
+    try {
+      console.log('[DEBUG] Dados recebidos para atualização no serviço:', data); // Log dos dados recebidos
+  
+      if (!data) {
+        throw new Error('Dados inválidos para atualização.');
+      }
+  
+      const especializacao = await Especializacao.findOneBy({ id_especializacao: id });
+      if (!especializacao) {
+        console.warn('[AVISO] Especialização não encontrada para o ID:', id);
+        return false;
+      }
+  
+      // Atualiza os campos da especialização
+      especializacao.nome_especializacao = data.nome_especializacao;
+      especializacao.descricao_especializacao = data.descricao_especializacao;
+      especializacao.sigla_especializacao = data.sigla_especializacao;
+  
+      await especializacao.save();
+      console.log('[DEBUG] Especialização atualizada com sucesso:', especializacao); // Log da especialização atualizada
+      return true;
+    } catch (error) {
+      console.error('[ERRO] Falha ao atualizar especialização:', error);
+      throw new Error('Erro interno ao atualizar especialização');
     }
-
-    Object.assign(especializacao, data);
-    await especializacao.save();
-    return true;
   }
 
   async delete(id: number) {

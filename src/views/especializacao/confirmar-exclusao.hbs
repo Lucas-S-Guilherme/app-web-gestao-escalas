@@ -1,0 +1,18 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Confirmar Exclusão</h5>
+            <p>Você tem certeza que deseja excluir a especialização "{{especializacao.nome_especializacao}}"?</p>
+            <form method="POST" action="/especializacao/{{especializacao.id_especializacao}}/exclusao">
+              <button type="submit" class="btn btn-danger">Confirmar Exclusão</button>
+              <a href="/especializacao" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

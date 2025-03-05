@@ -10,6 +10,7 @@ import { NotFoundExceptionFilter } from './common/filters/not-found-exception.fi
 import { flashErrors } from './common/helpers/flash-errors';
 import { hbsRegisterHelpers } from './common/helpers/hbs-functions';
 import flash = require('connect-flash');
+import * as express from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -35,6 +36,10 @@ async function bootstrap() {
 
   app.use(flashErrors);
   app.useGlobalFilters(new NotFoundExceptionFilter());
+
+  // Configura o middleware para parsear o corpo das requisições
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
   await app.listen(3000);
 }

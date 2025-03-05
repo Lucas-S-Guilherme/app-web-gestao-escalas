@@ -5,21 +5,21 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{#if especializacao}}Editar Especialização{{else}}Nova Especialização{{/if}}</h5>
-            <form method="POST" action="{{#if especializacao}}/especializacao/{{especializacao.id_especializacao}}/atualizacao{{else}}/especializacao/novo{{/if}}">
-              <div class="mb-3">
-                <label for="nome_especializacao" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome_especializacao" name="nome_especializacao" value="{{especializacao.nome_especializacao}}" required>
-              </div>
-              <div class="mb-3">
-                <label for="descricao_especializacao" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="descricao_especializacao" name="descricao_especializacao" value="{{especializacao.descricao_especializacao}}" required>
-              </div>
-              <div class="mb-3">
-                <label for="sigla_especializacao" class="form-label">Sigla</label>
-                <input type="text" class="form-control" id="sigla_especializacao" name="sigla_especializacao" value="{{especializacao.sigla_especializacao}}" required>
-              </div>
-              <button type="submit" class="btn btn-primary">{{#if especializacao}}Atualizar{{else}}Salvar{{/if}}</button>
-              <a href="/especializacao" class="btn btn-secondary">Cancelar</a>
+            <form method="POST" action="/especializacao/{{especializacao.id_especializacao}}/atualizacao">
+                <div class="mb-3">
+                    <label for="nome_especializacao" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome_especializacao" name="nome_especializacao" value="{{especializacao.nome_especializacao}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descricao_especializacao" class="form-label">Descrição</label>
+                    <input type="text" class="form-control" id="descricao_especializacao" name="descricao_especializacao" value="{{especializacao.descricao_especializacao}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="sigla_especializacao" class="form-label">Sigla</label>
+                    <input type="text" class="form-control" id="sigla_especializacao" name="sigla_especializacao" value="{{especializacao.sigla_especializacao}}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+                <a href="/especializacao" class="btn btn-secondary">Cancelar</a>
             </form>
           </div>
         </div>
