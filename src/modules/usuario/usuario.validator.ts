@@ -1,5 +1,6 @@
 import { plainToInstance } from "class-transformer";
-import { validate, ValidationError } from "class-validator"; // Importe validate e ValidationError
+import { validate, ValidationError } from "class-validator";
+ // Importe validate e ValidationError
 import { BaseValidator } from 'src/common/validator/base.validator';
 import { IValidator } from "src/common/validator/interface.validator";
 import { UsuarioDto } from "./usuario.dto";

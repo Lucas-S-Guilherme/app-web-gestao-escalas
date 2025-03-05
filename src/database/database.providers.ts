@@ -10,7 +10,7 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '1234',
+        password: 'Banco1234!',
         database: 'SIGESC_Web',
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         namingStrategy: new SnakeNamingStrategy(),

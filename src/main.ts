@@ -16,7 +16,7 @@ async function bootstrap() {
 
   hbsRegisterHelpers(hbs);
   hbsUtils(hbs).registerWatchedPartials(join(__dirname, '/views/layouts'));
-  app.useStaticAssets(join(__dirname, '..', '/public')); //configura o servidor para servir arquivos estáticos a partir do diretório public, o caminho deve ser relativo a esse diretório, no main.hbs por exemplo
+  app.useStaticAssets(join(__dirname, '..', '/public')); //configura o servidor para servir arquivos estáticos a partir do diretório public, o caminho deve ser relativo a esse diretório, no main.hbs por exemploo
   app.setBaseViewsDir(join(__dirname, '/views'));
   hbs.registerPartials(join(__dirname, '/views/layouts/partials'));
   app.setViewEngine('hbs');

@@ -29,9 +29,12 @@ export class UsuarioService {
     async getById(id: number) {
         return await Usuario.findOneBy({ id_usuario: id });
     }
-  async getAll() {
-    return await Usuario.find();
-  }
+    
+    async getAll() {
+      const usuarios = await Usuario.find();
+      console.log('Usuários encontrados:', usuarios); // Adicione este log
+      return usuarios;
+    }
 
   async create(data: any) {
     const usuario = Usuario.create({ ...data });

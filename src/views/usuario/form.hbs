@@ -1,0 +1,41 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{#if usuario}}Editar Usuário{{else}}Novo Usuário{{/if}}</h5>
+            <form method="POST" action="{{#if usuario}}/usuario/{{usuario.id_usuario}}/atualizacao{{else}}/usuario/novo{{/if}}">
+              <div class="mb-3">
+                <label for="nome_usuario" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome_usuario" name="nome_usuario" value="{{usuario.nome_usuario}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="cpf_usuario" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf_usuario" name="cpf_usuario" value="{{usuario.cpf_usuario}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="data_nascimento_usuario" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" id="data_nascimento_usuario" name="data_nascimento_usuario" value="{{usuario.data_nascimento_usuario}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="telefone_usuario" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="telefone_usuario" name="telefone_usuario" value="{{usuario.telefone_usuario}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="email_usuario" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email_usuario" name="email_usuario" value="{{usuario.email_usuario}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="matricula" class="form-label">Matrícula</label>
+                <input type="text" class="form-control" id="matricula" name="matricula" value="{{usuario.matricula}}" required>
+              </div>
+              <button type="submit" class="btn btn-primary">{{#if usuario}}Atualizar{{else}}Salvar{{/if}}</button>
+              <a href="/usuario" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

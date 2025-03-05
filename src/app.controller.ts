@@ -7,4 +7,13 @@ export class AppController {
   home() {
     return {};
   }
+
+  @Get('/usuario')
+  @Render('usuario/index') // Renderiza a lista de usuários
+  usuario() {
+    return {};
+  }
+
+
+
 }

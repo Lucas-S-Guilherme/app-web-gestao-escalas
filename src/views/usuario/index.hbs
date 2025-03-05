@@ -1,0 +1,53 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lista de Usuários</h5>
+            <a href="/usuario/novo" class="btn btn-primary mb-3">Novo Usuário</a>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Tipo de Usuário</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Data de Nascimento</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Matrícula</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each usuarios}}
+                    <tr>
+                      <td>{{this.id_usuario}}</td>
+                      <td>{{this.tipo_usuario}}</td>
+                      <td>{{this.nome_usuario}}</td>
+                      <td>{{this.cpf_usuario}}</td>
+                      <td>{{this.data_nascimento_usuario}}</td>
+                      <td>{{this.telefone_usuario}}</td>
+                      <td>{{this.email_usuario}}</td>
+                      <td>{{this.matricula}}</td>
+                      <td>
+                        <a href="/usuario/{{this.id_usuario}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="/usuario/{{this.id_usuario}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+                      </td>
+                    </tr>
+                  {{else}}
+                    <tr>
+                      <td colspan="9" class="text-center">Nenhum usuário encontrado.</td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}
