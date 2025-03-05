@@ -31,9 +31,15 @@ export class UsuarioService {
     }
     
     async getAll() {
-      const usuarios = await Usuario.find();
-      console.log('Usuários encontrados:', usuarios); // Adicione este log
-      return usuarios;
+      try {
+        console.log('[DEBUG] Iniciando busca de usuários no banco...');
+        const usuarios = await Usuario.find();
+        console.log('[DEBUG] Usuários encontrados:', JSON.stringify(usuarios, null, 2));
+        return usuarios;
+      } catch (error) {
+        console.error('[ERRO CRÍTICO] Falha na busca:', error.stack);
+        throw new Error('Erro interno ao carregar usuários');
+      }
     }
 
   async create(data: any) {

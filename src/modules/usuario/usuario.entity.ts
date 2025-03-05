@@ -2,28 +2,28 @@ import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity('usuario')
 export class Usuario extends BaseEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({ name: 'id_usuario'})
     id_usuario: number;
 
-    @Column()
+    @Column({ name: 'tipo_usuario'})
     tipo_usuario: string;
 
-    @Column()
+    @Column({ name: 'nome_usuario'})
     nome_usuario: string;
 
-    @Column({ unique: true})
+    @Column({ unique: true, name: 'cpf_usuario'})
     cpf_usuario: string;
 
-    @Column()
+    @Column({ name: 'data_nascimento_usuario'})
     data_nascimento_usuario: Date;
 
-    @Column()
+    @Column({ name: 'telefone_usuario'})
     telefone_usuario:string;
 
-    @Column()
+    @Column({ name: 'email_usuario'})
     email_usuario: string;
 
-    @Column({unique: true})
+    @Column({unique: true, name: 'matricula'})
     matricula:string;
 
 }

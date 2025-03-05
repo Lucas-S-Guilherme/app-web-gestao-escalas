@@ -10,13 +10,19 @@ export class UsuarioController {
 
   @Get()
   @Render('usuario/index')
-  async index() {
+  async index(@Res() res: Response) {
     try {
+      console.log('[DEBUG] Acessando rota /usuario');
       const usuarios = await this.service.getAll();
+      
+      if (!usuarios || usuarios.length === 0) {
+        console.warn('[AVISO] Nenhum usuário encontrado no banco');
+      }
+      
       return { usuarios };
     } catch (error) {
-      console.error('Erro ao buscar usuários:', error);
-      return { usuarios: [] }; // Retorna uma lista vazia em caso de erro
+      console.error('[ERRO] Falha no controlador:', error.message);
+      return res.status(500).send('Erro interno do servidor');
     }
   }
 
@@ -25,6 +31,17 @@ export class UsuarioController {
   @Render('usuario/form')
   createForm() {
     return {};
+  }
+
+  @Get('buscar')
+  async buscarUsuarios(@Res() res: Response) {
+    try {
+      const usuarios = await this.service.getAll();
+      return res.json({ usuarios });
+    } catch (error) {
+      console.error('Erro ao buscar usuários:', error);
+      return res.status(500).json({ error: 'Erro ao buscar usuários' });
+    }
   }
 
   // Rota para Salvar os dados de cadastro
