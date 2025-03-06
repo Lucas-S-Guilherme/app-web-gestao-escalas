@@ -2,6 +2,8 @@
 
 Bem-vindo(a) ao **SIGESC** – Sistema de Gestão de Escalas, desenvolvido como **projeto final** para a disciplina **Programação Web 2** do **IFRO**. Este sistema tem como objetivo gerenciar de forma simples e eficiente escalas de trabalho, combatentes, turnos, restrições e muito mais.
 
+A Branch main-backup mostra o histórico de commits anterior, deixei ela como backup, pois precisei subir o código do zero do template fornecido pelo professor (https://github.com/joaoteixeira/ads-pw2-2024-2-estrutura-base), e por isso criei outra brancha main com push --force, o que apagou o histórico de commits.
+
 ---
 
 ## Sumário
