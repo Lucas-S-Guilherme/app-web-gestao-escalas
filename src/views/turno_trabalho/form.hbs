@@ -1,0 +1,56 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              {{#if turno}}Editar Turno de Trabalho{{else}}Novo Turno de Trabalho{{/if}}
+            </h5>
+            <form method="POST" action="{{#if turno}}/turno_trabalho/{{turno.id_turno_trabalho}}/atualizacao{{else}}/turno_trabalho/novo{{/if}}">
+              <div class="mb-3">
+                <label for="data_inicio" class="form-label">Data Início</label>
+                <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="data_inicio"
+                  name="data_inicio"
+                  value="{{datetimeLocalFormat turno.data_inicio}}"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="data_fim" class="form-label">Data Fim</label>
+                <input
+                  type="datetime-local"
+                  class="form-control"
+                  id="data_fim"
+                  name="data_fim"
+                  value="{{datetimeLocalFormat turno.data_fim}}"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="id_escala" class="form-label">Escala</label>
+                <select class="form-control" id="id_escala" name="id_escala" required>
+                  {{#each escalas}}
+                    <option
+                      value="{{this.id_escala}}"
+                      {{#if (eq this.id_escala ../turno.escala.id_escala)}}selected{{/if}}
+                    >
+                      {{this.nome_escala}}
+                    </option>
+                  {{/each}}
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                {{#if turno}}Atualizar{{else}}Salvar{{/if}}
+              </button>
+              <a href="/turno_trabalho" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

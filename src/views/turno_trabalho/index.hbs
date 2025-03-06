@@ -1,0 +1,53 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lista de Turnos de Trabalho</h5>
+            <a href="/turno_trabalho/novo" class="btn btn-primary mb-3">Novo Turno</a>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Data Início</th>
+                    <th>Data Fim</th>
+                    <th>Escala</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#if turnos}}
+                    {{#each turnos}}
+                      <tr>
+                        <td>{{this.id_turno_trabalho}}</td>
+                        <td>{{dateFormatBR this.data_inicio}}</td>
+                        <td>{{dateFormatBR this.data_fim}}</td>
+                        <td>
+                          {{#if this.escala}}
+                            {{this.escala.nome_escala}}
+                          {{else}}
+                            -
+                          {{/if}}
+                        </td>
+                        <td>
+                          <a href="/turno_trabalho/{{this.id_turno_trabalho}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                          <a href="/turno_trabalho/{{this.id_turno_trabalho}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                  {{else}}
+                    <tr>
+                      <td colspan="5" class="text-center">Nenhum turno cadastrado.</td>
+                    </tr>
+                  {{/if}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}
