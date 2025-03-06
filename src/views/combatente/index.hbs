@@ -1,0 +1,61 @@
+{{#> main}}
+  {{#*inline "content"}}
+    {{#if flashErrors}}
+      <div class="alert alert-danger">
+        {{#each flashErrors}}
+          <p style="margin: 0; padding: 0;">{{this}}</p>
+        {{/each}}
+      </div>
+    {{/if}}
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lista de Combatentes</h5>
+            <a href="/combatente/novo" class="btn btn-primary mb-3">Novo Combatente</a>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Data de Nascimento</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Matrícula</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#if combatentes}}
+                    {{#each combatentes}}
+                      <tr>
+                        <td>{{this.id_combatente}}</td>
+                        <td>{{this.nome_combatente}}</td>
+                        <td>{{this.cpf_combatente}}</td>
+                        <td>{{dateFormatBR this.data_nascimento_combatente}}</td>
+                        <td>{{this.telefone_combatente}}</td>
+                        <td>{{this.email_combatente}}</td>
+                        <td>{{this.matricula_combatente}}</td>
+                        <td>
+                          <a href="/combatente/{{this.id_combatente}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                          <a href="/combatente/{{this.id_combatente}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                  {{else}}
+                    <tr>
+                      <td colspan="8" class="text-center">Nenhum combatente encontrado.</td>
+                    </tr>
+                  {{/if}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

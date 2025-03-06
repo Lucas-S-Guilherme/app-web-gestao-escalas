@@ -1,0 +1,48 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{#if combatente}}Editar Combatente{{else}}Novo Combatente{{/if}}</h5>
+            <form method="POST" action="{{#if combatente}}/combatente/{{combatente.id_combatente}}/atualizacao{{else}}/combatente/novo{{/if}}">
+              <div class="mb-3">
+                <label for="nome_combatente" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome_combatente" name="nome_combatente" value="{{combatente.nome_combatente}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="cpf_combatente" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf_combatente" name="cpf_combatente" value="{{combatente.cpf_combatente}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="data_nascimento_combatente" class="form-label">Data de Nascimento</label>
+                <input 
+                type="date" 
+                class="form-control" 
+                id="data_nascimento_combatente" 
+                name="data_nascimento_combatente" 
+                value="{{dateFormatBR combatente.data_nascimento_combatente}}" 
+                required
+                >
+              </div>
+              <div class="mb-3">
+                <label for="telefone_combatente" class="form-label">Telefone</label>
+                <input type="text" class="form-control" id="telefone_combatente" name="telefone_combatente" value="{{combatente.telefone_combatente}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="email_combatente" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email_combatente" name="email_combatente" value="{{combatente.email_combatente}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="matricula_combatente" class="form-label">Matrícula</label>
+                <input type="text" class="form-control" id="matricula_combatente" name="matricula_combatente" value="{{combatente.matricula_combatente}}" required>
+              </div>
+              <button type="submit" class="btn btn-primary">{{#if combatente}}Atualizar{{else}}Salvar{{/if}}</button>
+              <a href="/combatente" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}
