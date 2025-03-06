@@ -21,7 +21,7 @@ export class Escala extends BaseEntity {
   @Column({ name: 'data_confeccao', default: () => 'CURRENT_TIMESTAMP' })
   data_confeccao: Date;
 
-  @ManyToOne(() => Usuario, usuario => usuario.id_usuario)
+  @ManyToOne(() => Usuario, usuario => usuario.id_usuario,  { eager: true })
   @JoinColumn({ name: 'id_usuario' })
   usuario: Usuario;
 }

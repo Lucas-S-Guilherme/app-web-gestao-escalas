@@ -1,25 +1,64 @@
 {{#> main}}
   {{#*inline "content"}}
     <div class="row">
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title d-flex align-items-center gap-2 mb-4">
-                            Página Principal
-                            <span>
-                                <iconify-icon icon="solar:question-circle-bold" class="fs-7 d-flex text-muted" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-success" data-bs-title="Traffic Overview"></iconify-icon>
-                            </span>
-                        </h5>                        
-                    </div>
+      <div class="col-lg-12">
+        <div class="card p-4">
+          <!-- Título Principal / Boas-vindas -->
+          <h1 class="mb-3 text-center">Bem-vindo ao Sistema de Gestão de Escalas (SIGESC)</h1>
+          <p class="fs-5">
+            Este sistema foi desenvolvido para auxiliar no gerenciamento de escalas de trabalho, combatentes, turnos e muito mais.
+            Utilize o menu lateral para navegar pelas funcionalidades disponíveis.
+          </p>
+          <hr>
+
+          <!-- Cards com seções de destaque -->
+          <div class="row">
+            <!-- Card de Combatentes -->
+            <div class="col-md-4">
+              <div class="card bg-light mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Combatentes</h5>
+                  <p class="card-text">
+                    Gerencie os combatentes, suas funções, especializações e restrições de maneira simples e eficiente.
+                  </p>
+                  <a href="/combatente" class="btn btn-primary">Ver Combatentes</a>
                 </div>
+              </div>
             </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body text-center">
-              
+
+            <!-- Card de Escalas -->
+            <div class="col-md-4">
+              <div class="card bg-light mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Escalas</h5>
+                  <p class="card-text">
+                    Crie e visualize escalas, definindo períodos de trabalho para diferentes equipes ou setores.
+                  </p>
+                  <a href="/escala" class="btn btn-primary">Ver Escalas</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card de Turnos -->
+            <div class="col-md-4">
+              <div class="card bg-light mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Turnos</h5>
+                  <p class="card-text">
+                    Acompanhe os turnos de trabalho, atribua combatentes e garanta o cumprimento das regras de descanso.
+                  </p>
+                  <a href="/turno_trabalho" class="btn btn-primary">Ver Turnos</a>
+                </div>
+              </div>
             </div>
           </div>
-        </div>               
-        
+
+          <!-- Observação ou rodapé da página inicial -->
+          <p class="fs-6 text-muted mt-4">
+            Em caso de dúvidas, consulte o manual ou entre em contato com o administrador do sistema.
+          </p>
+        </div>
+      </div>
+    </div>
   {{/inline}}
 {{/main}}

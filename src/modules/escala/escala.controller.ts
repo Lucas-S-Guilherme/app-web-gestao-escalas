@@ -3,10 +3,14 @@ import { Response } from 'express';
 import { EscalaService } from './escala.service';
 import { EscalaValidator } from './escala.validator';
 import { setFlashErrors, setOld } from 'src/common/helpers/flash-errors';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Controller('escala')
 export class EscalaController {
-  constructor(private readonly service: EscalaService) {}
+  constructor(
+    private readonly service: EscalaService,
+    private readonly usuarioService: UsuarioService,
+  ) {}
 
   @Get()
   @Render('escala/index')
@@ -22,8 +26,9 @@ export class EscalaController {
 
   @Get('novo')
   @Render('escala/form')
-  createForm() {
-    return {};
+  async createForm() {
+    const usuarios = await this.usuarioService.getAll();
+    return { usuarios };
   }
 
   @Post('novo')
@@ -51,13 +56,14 @@ export class EscalaController {
   async updateForm(@Param('id') id: number, @Res() response: Response, @Req() request) {
     try {
       const escala = await this.service.getById(id);
+      const usuarios = await this.usuarioService.getAll();
 
       if (!escala) {
         setFlashErrors(request, ['Escala não encontrada.']);
         return response.redirect('/escala');
       }
 
-      return { escala };
+      return { escala, usuarios };
     } catch (error) {
       console.error('Erro ao buscar escala:', error);
       setFlashErrors(request, ['Ocorreu um erro ao buscar a escala. Tente novamente.']);

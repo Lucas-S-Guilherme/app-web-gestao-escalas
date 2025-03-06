@@ -30,7 +30,7 @@ export class EscalaService {
   }
 
   async getAll() {
-    const escalas = await Escala.find();
+    const escalas = await Escala.find({ relations: ['usuario'] });
     return escalas;
   }
 
