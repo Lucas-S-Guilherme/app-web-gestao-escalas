@@ -1,0 +1,25 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{#if funcao}}Editar Função{{else}}Nova Função{{/if}}</h5>
+            <form method="POST" action="{{#if funcao}}/funcao/{{funcao.id_funcao}}/atualizacao{{else}}/funcao/novo{{/if}}">
+              <div class="mb-3">
+                <label for="nome_funcao" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome_funcao" name="nome_funcao" value="{{funcao.nome_funcao}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="sigla_funcao" class="form-label">Sigla</label>
+                <input type="text" class="form-control" id="sigla_funcao" name="sigla_funcao" value="{{funcao.sigla_funcao}}" required>
+              </div>
+              <button type="submit" class="btn btn-primary">{{#if funcao}}Atualizar{{else}}Salvar{{/if}}</button>
+              <a href="/funcao" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

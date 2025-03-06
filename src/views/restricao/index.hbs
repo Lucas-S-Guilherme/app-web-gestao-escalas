@@ -1,0 +1,57 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lista de Restrições</h5>
+            {{#if successMessage}}
+              <div class="alert alert-success">
+                {{successMessage}}
+              </div>
+            {{/if}}
+            {{#if errorMessage}}
+              <div class="alert alert-danger">
+                {{errorMessage}}
+              </div>
+            {{/if}}
+            <a href="/restricao/novo" class="btn btn-primary mb-3">Nova Restrição</a>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Grupo</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#if restricoes}}
+                    {{#each restricoes}}
+                      <tr>
+                        <td>{{this.id_restricao}}</td>
+                        <td>{{this.nome_restricao}}</td>
+                        <td>{{this.grupo_restricao}}</td>
+                        <td>{{this.descricao_restricao}}</td>
+                        <td>
+                          <a href="/restricao/{{this.id_restricao}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                          <a href="/restricao/{{this.id_restricao}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                  {{else}}
+                    <tr>
+                      <td colspan="5" class="text-center">Nenhuma restrição encontrada.</td>
+                    </tr>
+                  {{/if}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

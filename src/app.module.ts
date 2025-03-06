@@ -7,9 +7,11 @@ import { RequestLoggerMiddleware } from './common/middleware/resquest.logger';
 //acrescentar cada novo módulo de cada entidade
 import { DatabaseModule } from './database/database.module';
 import { EspecializacaoModule } from './modules/especializacao/especializacao.module';
+import { FuncaoModule } from './modules/funcao/funcao.module';
+import { RestricaoModule } from './modules/restricao/restricao.module';
 
 @Module({
-  imports: [DatabaseModule, AuthModule, UsersModule, UsuarioModule, EspecializacaoModule], // sempre acrescentar nova entidade que for gerada os módulos
+  imports: [DatabaseModule, AuthModule, UsersModule, UsuarioModule, EspecializacaoModule, FuncaoModule, RestricaoModule], // sempre acrescentar nova entidade que for gerada os módulos
   controllers: [AppController],
   providers: [],
 })
