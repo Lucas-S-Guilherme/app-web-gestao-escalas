@@ -1,0 +1,41 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{#if escala}}Editar Escala{{else}}Nova Escala{{/if}}</h5>
+            <form method="POST" action="{{#if escala}}/escala/{{escala.id_escala}}/atualizacao{{else}}/escala/novo{{/if}}">
+              <div class="mb-3">
+                <label for="nome_escala" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome_escala" name="nome_escala" value="{{escala.nome_escala}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="local_trabalho" class="form-label">Local de Trabalho</label>
+                <input type="text" class="form-control" id="local_trabalho" name="local_trabalho" value="{{escala.local_trabalho}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="data_inicio" class="form-label">Data de Início</label>
+                <input type="datetime-local" class="form-control" id="data_inicio" name="data_inicio" value="{{escala.data_inicio}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="data_fim" class="form-label">Data de Fim</label>
+                <input type="datetime-local" class="form-control" id="data_fim" name="data_fim" value="{{escala.data_fim}}" required>
+              </div>
+              <div class="mb-3">
+                <label for="id_usuario" class="form-label">Usuário</label>
+                <select class="form-control" id="id_usuario" name="id_usuario" required>
+                  {{#each usuarios}}
+                    <option value="{{this.id_usuario}}" {{#if (eq this.id_usuario ../escala.id_usuario)}}selected{{/if}}>{{this.nome_usuario}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">{{#if escala}}Atualizar{{else}}Salvar{{/if}}</button>
+              <a href="/escala" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

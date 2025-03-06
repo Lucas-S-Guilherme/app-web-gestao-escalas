@@ -1,0 +1,61 @@
+{{#> main}}
+  {{#*inline "content"}}
+    {{#if flashErrors}}
+      <div class="alert alert-danger">
+        {{#each flashErrors}}
+          <p style="margin: 0; padding: 0;">{{this}}</p>
+        {{/each}}
+      </div>
+    {{/if}}
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Lista de Escalas</h5>
+            <a href="/escala/novo" class="btn btn-primary mb-3">Nova Escala</a>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Local de Trabalho</th>
+                    <th>Data de Início</th>
+                    <th>Data de Fim</th>
+                    <th>Data de Confeccao</th>
+                    <th>Usuário</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#if escalas}}
+                    {{#each escalas}}
+                      <tr>
+                        <td>{{this.id_escala}}</td>
+                        <td>{{this.nome_escala}}</td>
+                        <td>{{this.local_trabalho}}</td>
+                        <td>{{dateFormatBR this.data_inicio}}</td>
+                        <td>{{dateFormatBR this.data_fim}}</td>
+                        <td>{{dateFormatBR this.data_confeccao}}</td>
+                        <td>{{this.usuario.nome_usuario}}</td>
+                        <td>
+                          <a href="/escala/{{this.id_escala}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+                          <a href="/escala/{{this.id_escala}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                  {{else}}
+                    <tr>
+                      <td colspan="8" class="text-center">Nenhuma escala encontrada.</td>
+                    </tr>
+                  {{/if}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}
