@@ -5,14 +5,19 @@ import { Usuario } from './usuario.entity';
 
 @Injectable()
 export class UsuarioService {
+  
+    // ...
     async delete(id: number) {
-        const usuario = await Usuario.findOneBy({ id_usuario: id });
-        if (!usuario) {
-            return false; // Retorna false se o usuário não for encontrado
-        }
-    
-        await usuario.remove();
-        return true; // Retorna true se a exclusão for bem-sucedida
+      const usuario = await Usuario.findOneBy({ id_usuario: id });
+      if (!usuario) {
+        return false;
+      }
+  
+      // Em vez de usuario.remove(), desativamos:
+      usuario.status_usuario = 'INATIVO';
+      await usuario.save();
+  
+      return true;
     }
 
     async update(id: number, data: any) {

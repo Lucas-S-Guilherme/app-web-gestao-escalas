@@ -49,6 +49,13 @@
                 <label for="matricula" class="form-label">Matrícula</label>
                 <input type="text" class="form-control" id="matricula" name="matricula" value="{{usuario.matricula}}" required>
               </div>
+              <div class="mb-3">
+                <label for="status_usuario" class="form-label">Status do Usuário</label>
+                <select class="form-control" id="status_usuario" name="status_usuario">
+                  <option value="ATIVO" {{#eq usuario.status_usuario "ATIVO"}}selected{{/eq}}>ATIVO</option>
+                  <option value="INATIVO" {{#eq usuario.status_usuario "INATIVO"}}selected{{/eq}}>INATIVO</option>
+                </select>
+              </div>
               <button type="submit" class="btn btn-primary">{{#if usuario}}Atualizar{{else}}Salvar{{/if}}</button>
               <a href="/usuario" class="btn btn-secondary">Cancelar</a>
             </form>

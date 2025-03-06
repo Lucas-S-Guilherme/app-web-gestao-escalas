@@ -36,21 +36,26 @@
                 <tbody id="tabela-usuarios">
                   {{#if usuarios}}
                     {{#each usuarios}}
-                      <tr>
-                        <td>{{this.id_usuario}}</td>
-                        <td>{{this.tipo_usuario}}</td>
-                        <td>{{this.nome_usuario}}</td>
-                        <td>{{this.cpf_usuario}}</td>
-                        <td>{{this.data_nascimento_usuario}}</td>
-                        <td>{{this.telefone_usuario}}</td>
-                        <td>{{this.email_usuario}}</td>
-                        <td>{{this.matricula}}</td>
-                        <td>
+                    <tr class="{{#if (eq this.status_usuario "INATIVO")}}table-secondary{{/if}}">
+                      <td>{{this.id_usuario}}</td>
+                      <td>{{this.tipo_usuario}}</td>
+                      <td>{{this.nome_usuario}}</td>
+                      <td>{{this.cpf_usuario}}</td>
+                      <td>{{this.data_nascimento_usuario}}</td>
+                      <td>{{this.telefone_usuario}}</td>
+                      <td>{{this.email_usuario}}</td>
+                      <td>{{this.matricula}}</td>
+                      <td>
+                        {{#if (eq this.status_usuario "ATIVO")}}
                           <a href="/usuario/{{this.id_usuario}}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
                           <a href="/usuario/{{this.id_usuario}}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
-                        </td>
-                      </tr>
-                    {{/each}}
+                        {{else}}
+                          <span class="text-muted">Usuário Inativo</span>
+                        {{/if}}
+                      </td>
+                    </tr>
+                  {{/each}}
+
                   {{else}}
                     <tr>
                       <td colspan="9" class="text-center">Nenhum usuário encontrado.</td>
@@ -88,8 +93,26 @@
 
       if (data.usuarios && data.usuarios.length > 0) {
         data.usuarios.forEach(usuario => {
+          // AQUI É O PONTO DE AJUSTE!
+          // Precisamos montar a linha com base no status_usuario
+
+          // Se "INATIVO", aplica a classe "table-secondary"
+          const rowClass = usuario.status_usuario === 'INATIVO' ? 'table-secondary' : '';
+
+          // Se "ATIVO", mostra botões Editar/Excluir
+          // Se "INATIVO", mostra "Usuário Inativo"
+          let acoesHTML = '';
+          if (usuario.status_usuario === 'ATIVO') {
+            acoesHTML = `
+              <a href="/usuario/${usuario.id_usuario}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
+              <a href="/usuario/${usuario.id_usuario}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
+            `;
+          } else {
+            acoesHTML = `<span class="text-muted">Usuário Inativo</span>`;
+          }
+
           const row = `
-            <tr>
+            <tr class="${rowClass}">
               <td>${usuario.id_usuario}</td>
               <td>${usuario.tipo_usuario}</td>
               <td>${usuario.nome_usuario}</td>
@@ -98,10 +121,7 @@
               <td>${usuario.telefone_usuario}</td>
               <td>${usuario.email_usuario}</td>
               <td>${usuario.matricula}</td>
-              <td>
-                <a href="/usuario/${usuario.id_usuario}/atualizacao" class="btn btn-sm btn-warning">Editar</a>
-                <a href="/usuario/${usuario.id_usuario}/exclusao" class="btn btn-sm btn-danger">Excluir</a>
-              </td>
+              <td>${acoesHTML}</td>
             </tr>
           `;
           tabela.insertAdjacentHTML('beforeend', row);

@@ -135,29 +135,21 @@ export class UsuarioController {
     }
   }
 
-  // Rota para Excluir
-  @Post(':id/exclusao')
-  async delete(@Param('id') id: number, @Res() response: Response, @Req() request) {
-    try {
-      const usuario = await this.service.getById(id);
+    @Post(':id/exclusao')
+    async delete(@Param('id') id: number, @Res() response: Response, @Req() request) {
+      try {
+        const result = await this.service.delete(id);
 
-      if (!usuario) {
-        setFlashErrors(request, ['Usuário não encontrado.']);
-        return response.redirect('/usuario');
+        if (!result) {
+          setFlashErrors(request, ['Erro ao excluir o usuário. Tente novamente.']);
+        }
+      } catch (error) {
+        console.error('Erro ao excluir usuário:', error);
+        setFlashErrors(request, [error.message || 'Ocorreu um erro ao excluir o usuário. Tente novamente.']);
       }
 
-      const result = await this.service.delete(id);
-
-      if (!result) {
-        setFlashErrors(request, ['Erro ao excluir o usuário. Tente novamente.']);
-      }
-    } catch (error) {
-      console.error('Erro ao excluir usuário:', error);
-      setFlashErrors(request, ['Ocorreu um erro ao excluir o usuário. Tente novamente.']);
+      return response.redirect('/usuario');
     }
-
-    return response.redirect('/usuario');
-  }
 
   
 
