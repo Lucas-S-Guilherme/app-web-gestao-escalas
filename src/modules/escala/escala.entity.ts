@@ -24,4 +24,5 @@ export class Escala extends BaseEntity {
   @ManyToOne(() => Usuario, usuario => usuario.id_usuario,  { eager: true })
   @JoinColumn({ name: 'id_usuario' })
   usuario: Usuario;
+    turnos: any;
 }
