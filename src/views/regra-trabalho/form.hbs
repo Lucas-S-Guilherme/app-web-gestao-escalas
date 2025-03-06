@@ -1,0 +1,25 @@
+{{#> main}}
+  {{#*inline "content"}}
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{#if regraTrabalho}}Editar Regra de Trabalho{{else}}Nova Regra de Trabalho{{/if}}</h5>
+            <form method="POST" action="{{#if regraTrabalho}}/regra-trabalho/{{regraTrabalho.id_regra_trabalho}}/atualizacao{{else}}/regra-trabalho/novo{{/if}}">
+                <div class="mb-3">
+                    <label for="descricao_regra_trabalho" class="form-label">Descrição</label>
+                    <input type="text" class="form-control" id="descricao_regra_trabalho" name="descricao_regra_trabalho" value="{{regraTrabalho.descricao_regra_trabalho}}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="horas_descanso_minimas" class="form-label">Horas de Descanso Mínimas</label>
+                    <input type="number" class="form-control" id="horas_descanso_minimas" name="horas_descanso_minimas" value="{{regraTrabalho.horas_descanso_minimas}}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">{{#if regraTrabalho}}Atualizar{{else}}Salvar{{/if}}</button>
+                <a href="/regra-trabalho" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/main}}

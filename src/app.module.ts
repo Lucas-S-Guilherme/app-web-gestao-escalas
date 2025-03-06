@@ -10,9 +10,10 @@ import { EspecializacaoModule } from './modules/especializacao/especializacao.mo
 import { FuncaoModule } from './modules/funcao/funcao.module';
 import { RestricaoModule } from './modules/restricao/restricao.module';
 import { CombatenteModule } from './modules/combatente/combatente.module';
+import { RegraTrabalhoModule } from './modules/regra-trabalho/regra-trabalho.module';
 
 @Module({
-  imports: [DatabaseModule, AuthModule, UsersModule, UsuarioModule, EspecializacaoModule, FuncaoModule, RestricaoModule, CombatenteModule], // sempre acrescentar nova entidade que for gerada os módulos
+  imports: [DatabaseModule, AuthModule, UsersModule, UsuarioModule, EspecializacaoModule, FuncaoModule, RestricaoModule, CombatenteModule, RegraTrabalhoModule], // sempre acrescentar nova entidade que for gerada os módulos
   controllers: [AppController],
   providers: [],
 })
